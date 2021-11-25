@@ -3,7 +3,7 @@ import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 
 const AppNavbar = () => {
   return (
-    <Navbar bg="light" expand="lg" className="mb-5">
+    <Navbar bg="primary" variant="dark" expand="lg" className="mb-5">
       <Container>
         <Navbar.Brand href="#home">Take Home Assessment</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

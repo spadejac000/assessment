@@ -24,23 +24,23 @@ const Dashboard = () => {
   return (
     <Fragment>
       <Row className="tabular-header">
-        <Col className="data-col-1"><strong>ID</strong></Col>
-        <Col className="data-col-2"><strong>SCHEDULED END DATE</strong></Col>
-        <Col className="data-col-3"><strong>INFRASTRUCTURE CHANGE ID</strong></Col>
-        <Col className="data-col-4"><strong>New DepVar</strong></Col>
-        <Col className="data-col-5"><strong>SUBMITTER</strong></Col>
-        <Col className="data-col-6"><strong>OCC_CR_Flag</strong></Col>
+        <Col sm={12} className="data-col-1"><strong>ID</strong></Col>
+        <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE</strong></Col>
+        <Col sm={12} className="data-col-3"><strong>INFRASTRUCTURE CHANGE ID</strong></Col>
+        <Col sm={12} className="data-col-4"><strong>New DepVar</strong></Col>
+        <Col sm={12} className="data-col-5"><strong>SUBMITTER</strong></Col>
+        <Col sm={12} className="data-col-6"><strong>OCC_CR_Flag</strong></Col>
       </Row>
       <hr/>
       {data.map(datum => (
         <div>
           <Row className="individual-data-entity-container">
-            <Col className="data-col-1">{datum._id}</Col>
-            <Col className="data-col-2">{datum.SCHEDULED_END_DATE}</Col>
-            <Col className="data-col-3">{datum.INFRASTRUCTURE_CHANGE_ID}</Col>
-            <Col className="data-col-4">{datum.New_DepVar}</Col>
-            <Col className="data-col-5">{datum.SUBMITTER}</Col>
-            <Col className="data-col-6">{datum.OCC_CR_Flag}</Col>
+            <Col sm={12} className="data-col-1">{datum._id}</Col>
+            <Col sm={12} className="data-col-2">{datum.SCHEDULED_END_DATE}</Col>
+            <Col sm={12} className="data-col-3">{datum.INFRASTRUCTURE_CHANGE_ID}</Col>
+            <Col sm={12} className="data-col-4">{datum.New_DepVar}</Col>
+            <Col sm={12} className="data-col-5">{datum.SUBMITTER}</Col>
+            <Col sm={12} className="data-col-6">{datum.OCC_CR_Flag}</Col>
           </Row>
           <hr/>
         </div>
