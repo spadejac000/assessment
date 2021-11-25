@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
+import '../css/dashboard.css'
 
 
 const Dashboard = () => {
@@ -21,20 +22,26 @@ const Dashboard = () => {
 
   return (
     <Fragment>
+      <div className="table-header">
+        <div>ID</div>
+        <div>SCHEDULED END DATE</div>
+        <div>INFRASTRUCTURE CHANGE ID</div>
+        <div>New DepVar</div>
+        <div>SUBMITTER</div>
+        <div>OCC_CR_Flag</div>
+      </div>
+      <hr/>
       {data.map(datum => (
         <div>
-          <span>{datum._id}</span>
-          <span>{datum.SCHEDULED_END_DATE}</span>
-          <span>{datum.INFRASTRUCTURE_CHANGE_ID}</span>
-          <span>{datum.New_DepVar}</span>
-          <span>{datum.SUBMITTER}</span>
-          <span>{datum.OCC_CR_Flag}</span>
-          {/* <span>{datum.APP_AG}</span>
-          <span>{datum.PredictedFlag}</span>
-          <span>{datum.ScoringDate}</span>
-          <span>{datum.STATUS_VALUE}</span>
-          <span>{datum.SUBMIT_DATE}</span>
-          <span>{datum.SCHEDULED_START_DATE}</span> */}
+          <div className="individual-data-entity-container">
+            <span>{datum._id}</span>
+            <span>{datum.SCHEDULED_END_DATE}</span>
+            <span>{datum.INFRASTRUCTURE_CHANGE_ID}</span>
+            <span>{datum.New_DepVar}</span>
+            <span>{datum.SUBMITTER}</span>
+            <span>{datum.OCC_CR_Flag}</span>
+          </div>
+          <hr/>
         </div>
       ))}
     </Fragment>

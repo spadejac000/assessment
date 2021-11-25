@@ -5,7 +5,7 @@ const AppNavbar = () => {
   return (
     <Navbar bg="light" expand="lg" className="mb-5">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">Take Home Assessment</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

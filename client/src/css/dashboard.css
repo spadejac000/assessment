@@ -1,0 +1,11 @@
+.table-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.individual-data-entity-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
