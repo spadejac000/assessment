@@ -1,11 +1,9 @@
-.table-header {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
+.tabular-header {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
 }
 
 .individual-data-entity-container {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
 }

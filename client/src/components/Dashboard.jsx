@@ -1,6 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import '../css/dashboard.css'
+import {Row, Col} from 'react-bootstrap'
 
 
 const Dashboard = () => {
@@ -22,27 +23,28 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-      <div className="table-header">
-        <div>ID</div>
-        <div>SCHEDULED END DATE</div>
-        <div>INFRASTRUCTURE CHANGE ID</div>
-        <div>New DepVar</div>
-        <div>SUBMITTER</div>
-        <div>OCC_CR_Flag</div>
-      </div>
+      <Row className="tabular-header">
+        <Col className="data-col-1"><strong>ID</strong></Col>
+        <Col className="data-col-2"><strong>SCHEDULED END DATE</strong></Col>
+        <Col className="data-col-3"><strong>INFRASTRUCTURE CHANGE ID</strong></Col>
+        <Col className="data-col-4"><strong>New DepVar</strong></Col>
+        <Col className="data-col-5"><strong>SUBMITTER</strong></Col>
+        <Col className="data-col-6"><strong>OCC_CR_Flag</strong></Col>
+      </Row>
       <hr/>
       {data.map(datum => (
         <div>
-          <div className="individual-data-entity-container">
-            <span>{datum._id}</span>
-            <span>{datum.SCHEDULED_END_DATE}</span>
-            <span>{datum.INFRASTRUCTURE_CHANGE_ID}</span>
-            <span>{datum.New_DepVar}</span>
-            <span>{datum.SUBMITTER}</span>
-            <span>{datum.OCC_CR_Flag}</span>
-          </div>
+          <Row className="individual-data-entity-container">
+            <Col className="data-col-1">{datum._id}</Col>
+            <Col className="data-col-2">{datum.SCHEDULED_END_DATE}</Col>
+            <Col className="data-col-3">{datum.INFRASTRUCTURE_CHANGE_ID}</Col>
+            <Col className="data-col-4">{datum.New_DepVar}</Col>
+            <Col className="data-col-5">{datum.SUBMITTER}</Col>
+            <Col className="data-col-6">{datum.OCC_CR_Flag}</Col>
+          </Row>
           <hr/>
         </div>
+          
       ))}
     </Fragment>
   )
