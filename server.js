@@ -7,6 +7,9 @@ const app = express();
 // bodyparser middleware
 app.use(bodyParser.json());
 
+// imported routes
+app.use('/api/data', data)
+
 // DB config
 const db = require('./config/keys').mongoURI
 
