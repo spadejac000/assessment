@@ -27,6 +27,7 @@ const Dashboard = () => {
 
   return (
     <Fragment>
+      <input type="text" placeholder="Search..." className="form-control mb-5"/>
       <div className="mb-3">Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
