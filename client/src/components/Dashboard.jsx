@@ -7,6 +7,21 @@ import {Row, Col} from 'react-bootstrap'
 const Dashboard = ({setAuth}) => {
 
   const [data, setData] = useState([])
+  const [name, setName] = useState("")
+
+  const getName = async () => {
+    try {
+      const response = await fetch('/api/dashboard', {
+        method: "GET",
+        headers: {token: localStorage.token}
+      })
+
+      const parseResponse = await response.json();
+      setName(parseResponse)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
 
   const getData = async () => {
     try {
@@ -18,12 +33,20 @@ const Dashboard = ({setAuth}) => {
   }
 
   useEffect(() => {
+    getName()
     getData()
   }, [])
 
+  const logout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('token')
+    setAuth(false)
+  }
+
   return (
     <Fragment>
-      <button onClick={() => setAuth(false)}>Logout</button>
+      <h1>{name}</h1>
+      <button onClick={e => logout(e)}>Logout</button>
       <span>Page 1 of 900 entities</span>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID</strong></Col>
