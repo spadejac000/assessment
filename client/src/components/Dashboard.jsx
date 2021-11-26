@@ -4,7 +4,7 @@ import '../css/dashboard.css'
 import {Row, Col} from 'react-bootstrap'
 
 
-const Dashboard = () => {
+const Dashboard = ({setAuth}) => {
 
   const [data, setData] = useState([])
 
@@ -23,7 +23,8 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-      <span className="mb-5">Page 1 of 900 entities</span>
+      <button onClick={() => setAuth(false)}>Logout</button>
+      <span>Page 1 of 900 entities</span>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID</strong></Col>
         <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE</strong></Col>

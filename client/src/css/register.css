@@ -1,13 +1,13 @@
-.login-form-container {
+.register-form-container {
   height: 90vh;
   display: flex;
   align-items: center;
 }
 
-.login-form {
+.register-form {
   width: 30%;
 }
 
-.login-form-title {
+.register-form-title {
   margin-bottom: 0px;
 }
