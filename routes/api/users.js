@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt')
+const jwtGenerator = require('../../utils/jwtGenerator')
 
 // user model
 const User = require('../../models/User')
@@ -32,7 +33,8 @@ router.post("/register", async (req, res) => {
     });
   
     newUser.save();
-    res.json(newUser)
+    const token = jwtGenerator(newUser._id, )
+    res.json({token})
   } catch (error) {
     console.error(error.message)
     res.status(500).send("server error")
