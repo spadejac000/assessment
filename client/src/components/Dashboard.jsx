@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSort} from '@fortawesome/free-solid-svg-icons';
 
 
-const Dashboard = ({setAuth}) => {
+const Dashboard = () => {
 
   const [data, setData] = useState([])
   const [dataLength, setDataLength] = useState(0)
@@ -27,7 +27,7 @@ const Dashboard = ({setAuth}) => {
 
   return (
     <Fragment>
-      <div>Page 1 of {dataLength} entities</div>
+      <div className="mb-3">Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
         <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE <FontAwesomeIcon icon={faSort}/></strong></Col>
