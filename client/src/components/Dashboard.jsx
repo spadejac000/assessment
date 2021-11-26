@@ -3,6 +3,8 @@ import axios from 'axios'
 import '../css/dashboard.css'
 import {Row, Col, Button} from 'react-bootstrap'
 import {toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faSort} from '@fortawesome/free-solid-svg-icons';
 
 
 const Dashboard = ({setAuth}) => {
@@ -53,12 +55,12 @@ const Dashboard = ({setAuth}) => {
       <Button onClick={e => logout(e)}>Logout</Button>
       <div>Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
-        <Col sm={12} className="data-col-1"><strong>ID</strong></Col>
-        <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE</strong></Col>
-        <Col sm={12} className="data-col-3"><strong>INFRASTRUCTURE CHANGE ID</strong></Col>
-        <Col sm={12} className="data-col-4"><strong>New DepVar</strong></Col>
-        <Col sm={12} className="data-col-5"><strong>SUBMITTER</strong></Col>
-        <Col sm={12} className="data-col-6"><strong>OCC_CR_Flag</strong></Col>
+        <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
+        <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE <FontAwesomeIcon icon={faSort}/></strong></Col>
+        <Col sm={12} className="data-col-3"><strong>INFRASTRUCTURE CHANGE ID <FontAwesomeIcon icon={faSort}/></strong></Col>
+        <Col sm={12} className="data-col-4"><strong>New DepVar <FontAwesomeIcon icon={faSort}/></strong></Col>
+        <Col sm={12} className="data-col-5"><strong>SUBMITTER <FontAwesomeIcon icon={faSort}/></strong></Col>
+        <Col sm={12} className="data-col-6"><strong>OCC_CR_Flag <FontAwesomeIcon icon={faSort}/></strong></Col>
       </Row>
       <hr/>
       {data.map(datum => (
