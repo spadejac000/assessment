@@ -10,22 +10,7 @@ import {faSort} from '@fortawesome/free-solid-svg-icons';
 const Dashboard = ({setAuth}) => {
 
   const [data, setData] = useState([])
-  const [name, setName] = useState("")
   const [dataLength, setDataLength] = useState(0)
-
-  const getName = async () => {
-    try {
-      const response = await fetch('/api/dashboard', {
-        method: "GET",
-        headers: {token: localStorage.token}
-      })
-
-      const parseResponse = await response.json();
-      setName(parseResponse)
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
 
   const getData = async () => {
     try {
@@ -38,7 +23,6 @@ const Dashboard = ({setAuth}) => {
   }
 
   useEffect(() => {
-    getName()
     getData()
   }, [])
 
@@ -51,7 +35,6 @@ const Dashboard = ({setAuth}) => {
 
   return (
     <Fragment>
-      <h1>{name}</h1>
       <Button onClick={e => logout(e)}>Logout</Button>
       <div>Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
