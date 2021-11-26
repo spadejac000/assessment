@@ -10,6 +10,7 @@ const Dashboard = () => {
 
   const [data, setData] = useState([])
   const [dataLength, setDataLength] = useState(0)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const getData = async () => {
     try {
@@ -27,7 +28,7 @@ const Dashboard = () => {
 
   return (
     <Fragment>
-      <input type="text" placeholder="Search..." className="form-control mb-5"/>
+      <input type="text" placeholder="Search..." className="form-control mb-5" onChange={event => {setSearchTerm(event.target.value)}}/>
       <div className="mb-3">Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
@@ -38,7 +39,19 @@ const Dashboard = () => {
         <Col sm={12} className="data-col-6"><strong>OCC_CR_Flag <FontAwesomeIcon icon={faSort}/></strong></Col>
       </Row>
       <hr/>
-      {data.map(datum => (
+      {data.filter((val) => {
+        if(searchTerm == "") {
+          return val
+        } else if (
+          val._id.toLowerCase().includes(searchTerm.toLowerCase()) || val.SCHEDULED_END_DATE.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          val.INFRASTRUCTURE_CHANGE_ID.toLowerCase().includes(searchTerm.toLowerCase()) || 
+          val.New_DepVar.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          val.SUBMITTER.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          val.OCC_CR_Flag.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+          return val
+        }
+      }).map(datum => (
         <div>
           <Row className="individual-data-entity-container">
             <Col sm={12} className="data-col-1">{datum._id}</Col>
