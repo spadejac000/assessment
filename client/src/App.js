@@ -42,11 +42,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <AppNavbar/>
+        <AppNavbar isAuthenticated={isAuthenticated} setAuth={setAuth}/>
         <Container>
           <Routes>
-            <Route exact path="/login" element={!isAuthenticated ? <Login  setAuth={setAuth}/> : <Navigate to="/"/>}/>
-            <Route exact path="/register" element={!isAuthenticated ? <Register  setAuth={setAuth}/> : <Navigate to="/login"/>}/>
+            <Route exact path="/login" element={!isAuthenticated ? <Login setAuth={setAuth}/> : <Navigate to="/"/>}/>
+            <Route exact path="/register" element={!isAuthenticated ? <Register setAuth={setAuth}/> : <Navigate to="/login"/>}/>
             <Route exact path="/" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="login"/>}/>
           </Routes>
         </Container>

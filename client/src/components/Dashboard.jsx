@@ -1,8 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import '../css/dashboard.css'
-import {Row, Col, Button} from 'react-bootstrap'
-import {toast } from 'react-toastify';
+import {Row, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSort} from '@fortawesome/free-solid-svg-icons';
 
@@ -26,16 +25,8 @@ const Dashboard = ({setAuth}) => {
     getData()
   }, [])
 
-  const logout = (e) => {
-    e.preventDefault()
-    localStorage.removeItem('token')
-    setAuth(false)
-    toast.success("Logged out successfully!")
-  }
-
   return (
     <Fragment>
-      <Button onClick={e => logout(e)}>Logout</Button>
       <div>Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
