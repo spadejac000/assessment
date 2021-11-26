@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const jwtGenerator = require('../../utils/jwtGenerator')
+const validInfo = require('../../middleware/validInfo')
+const authorization = require('../../middleware/authorization')
 
 // user model
 const User = require('../../models/User')
 
 // register
-router.post("/register", async (req, res) => {
+router.post("/register", validInfo, async (req, res) => {
   try {
     const {name, email, password} = req.body
     const user = await User.exists({ email: email });
@@ -36,7 +38,7 @@ router.post("/register", async (req, res) => {
 })
 
 // login
-router.post("/login", async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
   try {
     const {email, password} = req.body
 
