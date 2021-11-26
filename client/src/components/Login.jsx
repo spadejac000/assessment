@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
 import '../css/login.css';
 import {Link} from 'react-router-dom';
+import {toast} from 'react-toastify'
 
 export default function Login({setAuth}) {
 
@@ -26,8 +27,15 @@ export default function Login({setAuth}) {
         body: JSON.stringify(body)
       })
       const parseResponse = await response.json()
-      localStorage.setItem("token", parseResponse.token)
-      setAuth(true)
+      if(parseResponse.token) {
+        localStorage.setItem("token", parseResponse.token)
+        setAuth(true)
+        toast.success("Logged in successfully!")
+      } else {
+        setAuth(false)
+        toast.error(parseResponse)
+      }
+      
     } catch (error) {
       console.error(error.message)
     }

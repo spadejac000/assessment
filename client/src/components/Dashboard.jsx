@@ -2,6 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import '../css/dashboard.css'
 import {Row, Col} from 'react-bootstrap'
+import {toast } from 'react-toastify';
 
 
 const Dashboard = ({setAuth}) => {
@@ -41,6 +42,7 @@ const Dashboard = ({setAuth}) => {
     e.preventDefault()
     localStorage.removeItem('token')
     setAuth(false)
+    toast.success("Logged out successfully!")
   }
 
   return (

@@ -13,10 +13,9 @@ router.post("/register", validInfo, async (req, res) => {
   try {
     const {name, email, password} = req.body
     const user = await User.exists({ email: email });
-    console.log('here is the user right here: ', typeof user)
 
     if(user !== false) {
-      return res.status(401).send("User already exits")
+      return res.status(401).json("User already exits")
     }
     const saltRound = 10
     const salt = await bcrypt.genSalt(saltRound)
