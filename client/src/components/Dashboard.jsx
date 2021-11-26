@@ -1,7 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import '../css/dashboard.css'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Button} from 'react-bootstrap'
 import {toast } from 'react-toastify';
 
 
@@ -9,6 +9,7 @@ const Dashboard = ({setAuth}) => {
 
   const [data, setData] = useState([])
   const [name, setName] = useState("")
+  const [dataLength, setDataLength] = useState(0)
 
   const getName = async () => {
     try {
@@ -28,6 +29,7 @@ const Dashboard = ({setAuth}) => {
     try {
       const response = await axios.get('/api/data')
       setData(response.data)
+      setDataLength(response.data.length)
     } catch (error) {
       console.error(error.message)
     }
@@ -48,8 +50,8 @@ const Dashboard = ({setAuth}) => {
   return (
     <Fragment>
       <h1>{name}</h1>
-      <button onClick={e => logout(e)}>Logout</button>
-      <span>Page 1 of 900 entities</span>
+      <Button onClick={e => logout(e)}>Logout</Button>
+      <div>Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID</strong></Col>
         <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE</strong></Col>

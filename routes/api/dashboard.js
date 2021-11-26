@@ -8,7 +8,6 @@ const User = require('../../models/User')
 router.get('/', authorization, async (req, res) => {
   try {
     const user = await User.findById(req.user)
-    console.log('right here: ', user._id)
     res.json(user.name)
   } catch (error) {
     console.error(error.message)
