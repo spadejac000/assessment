@@ -6,7 +6,7 @@ const Data = require('../../models/Data')
 
 // route Get api/data
 // route description: get all data
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   Data.countDocuments({name: "data"})
     .then(count => console.log('here is the count of entities: ', count));
   Data.find()
