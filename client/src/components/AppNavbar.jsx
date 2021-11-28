@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import {printUser} from '../actions/userActions'
 import {toast } from 'react-toastify';
 import '../css/app-navbar.css'
+import FilterSearch from './FilterSearch'
+import {Route} from 'react-router-dom'
 
 const AppNavbar = ({isAuthenticated, setAuth}) => {
 
@@ -31,11 +33,11 @@ const AppNavbar = ({isAuthenticated, setAuth}) => {
       
       <Navbar bg="primary" variant="dark" expand="lg" className="mb-5">
         <Container>
-          <Navbar.Brand href="#home">Take Home Assessment</Navbar.Brand>
+          <Navbar.Brand href="/">Take Home Assessment</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto mr-5">
-              <Button onClick={e => logout(e)}><FontAwesomeIcon icon={faUser}/> Logout</Button>
+              <Button className="btn-outline-light" onClick={e => logout(e)}><FontAwesomeIcon icon={faUser}/> Logout</Button>
             </Nav>
             <div className="navbar-user-name ms-3">
               <span className="welcome-title">Welcome, {user.user}</span>

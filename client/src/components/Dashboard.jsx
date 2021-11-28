@@ -1,34 +1,35 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import '../css/dashboard.css'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Form, FormControl, Button} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSort} from '@fortawesome/free-solid-svg-icons';
+import Paginate from './Paginate';
+import {useDispatch, useSelector} from 'react-redux';
+import {listData} from '../actions/dataActions';
+import {useParams} from 'react-router-dom'
+import FilterSearch from './FilterSearch'
 
 
 const Dashboard = () => {
 
-  const [data, setData] = useState([])
-  const [dataLength, setDataLength] = useState(0)
-  const [searchTerm, setSearchTerm] = useState('')
+  const {keyword} = useParams();
+  console.log('here is the the keyword in dashboard: ', keyword)
 
-  const getData = async () => {
-    try {
-      const response = await axios.get('/api/data')
-      setData(response.data)
-      setDataLength(response.data.length)
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
+  // const {pageNumber} = useParams() || 1;
+  const dispatch = useDispatch()
+  const [dataLength, setDataLength] = useState(0)
+
+  const dataList = useSelector((state) => state.data)
+  const {loading, error, data} = dataList
 
   useEffect(() => {
-    getData()
-  }, [])
+    dispatch(listData(keyword))
+  }, [dispatch, keyword])
 
   return (
     <Fragment>
-      <input type="text" placeholder="Search..." className="form-control mb-5" onChange={event => {setSearchTerm(event.target.value)}}/>
+      <FilterSearch/>
       <div className="mb-3">Page 1 of {dataLength} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
@@ -39,19 +40,7 @@ const Dashboard = () => {
         <Col sm={12} className="data-col-6"><strong>OCC_CR_Flag <FontAwesomeIcon icon={faSort}/></strong></Col>
       </Row>
       <hr/>
-      {data.filter((val) => {
-        if(searchTerm == "") {
-          return val
-        } else if (
-          val._id.toLowerCase().includes(searchTerm.toLowerCase()) || val.SCHEDULED_END_DATE.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          val.INFRASTRUCTURE_CHANGE_ID.toLowerCase().includes(searchTerm.toLowerCase()) || 
-          val.New_DepVar.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          val.SUBMITTER.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          val.OCC_CR_Flag.toLowerCase().includes(searchTerm.toLowerCase())
-          ) {
-          return val
-        }
-      }).map(datum => (
+      {data.map(datum => (
         <div>
           <Row className="individual-data-entity-container">
             <Col sm={12} className="data-col-1">{datum._id}</Col>

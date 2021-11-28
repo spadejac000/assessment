@@ -7,36 +7,25 @@ const Data = require('../../models/Data')
 // route Get api/data
 // route description: get all data
 router.get('/', async (req, res) => {
-  let entityCount = await Data.countDocuments({name: "data"})
-    .then(count => {return count});
-  Data.find()
-    .then(data => res.json(data))
-})
 
-router.get('/pagination', async (req, res) => {
-  let data = await Data.find()
-  const page = parseInt(req.query.page)
-  const limit = parseInt(req.query.limit)
-  const startIndex = (page - 1) * limit
-  const endIndex = page * limit
-  const results = {}
-
-  if(endIndex < await Data.countDocuments().exec()) {
-    results.next = {
-      page: page + 1,
-      limit: limit
+  console.log('here is the req.query: ', Object.keys(req.query)[0])
+  const keyword = Object.keys(req.query)[0] ? 
+    {"$or": [
+      {_id: {$regex: Object.keys(req.query)[0].toString(), $options: 'i'}},
+      {SCHEDULED_END_DATE: {$regex: Object.keys(req.query)[0].toString(), $options: 'i'}},
+      {INFRASTRUCTURE_CHANGE_ID: {$regex: Object.keys(req.query)[0].toString(), $options: 'i'}},
+      {New_DepVar: {$regex: Object.keys(req.query)[0].toString(), $options: 'i'}},
+      {SUBMITTER: {$regex: Object.keys(req.query)[0], $options: 'i'}},
+      {OCC_CR_Flag: {$regex: Object.keys(req.query)[0].toString(), $options: 'i'}}
+      ]
     }
-  }
+   : {}
 
-  if(startIndex > 0) {
-    results.previous = {
-      page: page - 1,
-      limit: limit
-    }
-  }
-  
-  results.results = await data.slice(startIndex, endIndex)
-  res.json(results)
+  console.log('here is the backend key word: ', keyword)
+
+  const data = await Data.find({...keyword})
+  console.log('backend data: ', data)
+  res.json(data)
 })
 
 
