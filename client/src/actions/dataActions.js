@@ -1,14 +1,13 @@
 import {DATA_LIST_REQUEST, DATA_LIST_SUCCESS, DATA_LIST_FAIL} from '../constants/dataConstants'
 import axios from 'axios';
 
-export const listData = (keyword = '') => async (dispatch) => {
-  console.log('keyword in data actions: ', keyword)
+export const listData = (keyword = '', pageNumber = '') => async (dispatch) => {
   try {
     dispatch({type: DATA_LIST_REQUEST})
 
-    const {data} = await axios.get(`/api/data?${keyword.trim()}`)
+    const {data} = await axios.get(`/api/data?${keyword.trim()}&pageNumber=${pageNumber}`)
 
-    console.log('here is the data for the keyword: ', data)
+    console.log('the data in actions res: ', data)
 
     dispatch({
       type: DATA_LIST_SUCCESS,

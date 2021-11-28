@@ -49,6 +49,8 @@ function App() {
             <Route exact path="/register" element={!isAuthenticated ? <Register setAuth={setAuth}/> : <Navigate to="/login"/>}/>
             <Route exact path="/" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="login"/>}/>
             <Route path="/search/:keyword" element={<Dashboard/>}/>
+            <Route path="/page/:pageNumber" element={<Dashboard/>}/>
+            <Route path="/search/:keyword/page/:pageNumber" element={<Dashboard/>}/>
           </Routes>
         </Container>
       </Router>
