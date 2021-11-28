@@ -12,11 +12,13 @@ import FilterSearch from './FilterSearch'
 
 
 const Dashboard = () => {
+  const params = useParams()
+
+  console.log('use Params: ', params)
 
   const {keyword} = useParams();
-  console.log('here is the the keyword in dashboard: ', keyword)
 
-  // const {pageNumber} = useParams() || 1;
+  const pageNumber = params.pageNumber || 1;
   const dispatch = useDispatch()
   const [dataLength, setDataLength] = useState(0)
 
@@ -24,8 +26,8 @@ const Dashboard = () => {
   const {loading, error, data} = dataList
 
   useEffect(() => {
-    dispatch(listData(keyword))
-  }, [dispatch, keyword])
+    dispatch(listData(keyword, pageNumber))
+  }, [dispatch, keyword, pageNumber])
 
   return (
     <Fragment>
