@@ -23,7 +23,7 @@ const Dashboard = () => {
   const [dataLength, setDataLength] = useState(0)
 
   const dataList = useSelector((state) => state.data)
-  const {loading, error, data} = dataList
+  const {loading, error, data, page, pages} = dataList
 
   useEffect(() => {
     dispatch(listData(keyword, pageNumber))
@@ -56,6 +56,7 @@ const Dashboard = () => {
         </div>
           
       ))}
+      <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''}/>
     </Fragment>
   )
 }
