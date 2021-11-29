@@ -32,7 +32,7 @@ const Dashboard = () => {
   return (
     <Fragment>
       <FilterSearch/>
-      <div className="mb-3">Page 1 of {dataLength} entities</div>
+      <div className="mb-3">Page {page} of {data.length * pages} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1"><strong>ID <FontAwesomeIcon icon={faSort}/></strong></Col>
         <Col sm={12} className="data-col-2"><strong>SCHEDULED END DATE <FontAwesomeIcon icon={faSort}/></strong></Col>
