@@ -16,9 +16,8 @@ const Dashboard = () => {
   const {keyword} = useParams();
   const pageNumber = params.pageNumber || 1;
   const dispatch = useDispatch()
-  const [dataLength, setDataLength] = useState(0)
   const dataList = useSelector((state) => state.data)
-  const {loading, error, data, page, pages, totalEntities, highRiskCount} = dataList
+  const {data, page, pages, totalEntities, highRiskCount} = dataList
  
   const [searchBy, setSearchBy] = useState(null)
   const [sortType, setSortType] = useState("ascending")
@@ -36,6 +35,8 @@ const Dashboard = () => {
       return isReversed * a.SUBMITTER.localeCompare(b.SUBMITTER)
     } else if(searchBy === 'OCC_CR_Flag') {
       return isReversed * a.OCC_CR_Flag.localeCompare(b.OCC_CR_Flag)
+    } else {
+      return null
     }
     
   })
@@ -91,20 +92,22 @@ const Dashboard = () => {
             style={{cursor: 'pointer'}}>OCC_CR_Flag <FontAwesomeIcon icon={faSort}/></strong></Col>
       </Row>
       <hr/>
-      {sorted.map(datum => (
-        <div>
-          <Row className="individual-data-entity-container">
-            <Col sm={12} className="data-col-1">{datum._id}</Col>
-            <Col sm={12} className="data-col-2">{datum.SCHEDULED_END_DATE}</Col>
-            <Col sm={12} className="data-col-3">{datum.INFRASTRUCTURE_CHANGE_ID}</Col>
-            <Col sm={12} className="data-col-4">{datum.New_DepVar}</Col>
-            <Col sm={12} className="data-col-5">{datum.SUBMITTER}</Col>
-            <Col sm={12} className="data-col-6">{datum.OCC_CR_Flag}</Col>
-          </Row>
-          <hr/>
-        </div>
-          
-      ))}
+      <div className="data-table-chart">
+        {sorted.map(datum => (
+          <div>
+            <Row className="individual-data-entity-container">
+              <Col sm={12} className="data-col-1">{datum._id}</Col>
+              <Col sm={12} className="data-col-2">{datum.SCHEDULED_END_DATE}</Col>
+              <Col sm={12} className="data-col-3">{datum.INFRASTRUCTURE_CHANGE_ID}</Col>
+              <Col sm={12} className="data-col-4">{datum.New_DepVar}</Col>
+              <Col sm={12} className="data-col-5">{datum.SUBMITTER}</Col>
+              <Col sm={12} className="data-col-6">{datum.OCC_CR_Flag}</Col>
+            </Row>
+            <hr/>
+          </div>
+        ))}
+      </div>
+      
       <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''}/>
     </Fragment>
   )

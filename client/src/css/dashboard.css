@@ -7,3 +7,7 @@
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
 }
+
+.data-table-chart {
+  margin-bottom: 5rem;
+}

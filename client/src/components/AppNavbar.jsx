@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {Navbar, Container, Nav, Button} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
@@ -6,8 +6,6 @@ import {useDispatch, useSelector} from 'react-redux'
 import {printUser} from '../actions/userActions'
 import {toast } from 'react-toastify';
 import '../css/app-navbar.css'
-import FilterSearch from './FilterSearch'
-import {Route} from 'react-router-dom'
 
 const AppNavbar = ({isAuthenticated, setAuth}) => {
 
