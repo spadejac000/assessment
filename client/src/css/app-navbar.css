@@ -5,3 +5,8 @@
 .app-navbar {
   margin-bottom: 5rem;
 }
+
+.logout-button:hover {
+ background: #0d6efd;
+ color: white;
+}

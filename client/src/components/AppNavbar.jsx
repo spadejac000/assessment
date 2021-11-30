@@ -37,7 +37,7 @@ const AppNavbar = ({isAuthenticated, setAuth}) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto mr-5">
-              <Button className="btn-outline-light" onClick={e => logout(e)}><FontAwesomeIcon icon={faUser}/> Logout</Button>
+              <Button className="btn-outline-light logout-button" onClick={e => logout(e)}><FontAwesomeIcon icon={faUser}/> Logout</Button>
             </Nav>
             <div className="navbar-user-name ms-3">
               <span className="welcome-title">Welcome, {user.user}</span>
