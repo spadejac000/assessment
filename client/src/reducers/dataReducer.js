@@ -7,9 +7,9 @@ export const dataReducer = (state = {data: []}, action) => {
     case DATA_LIST_SUCCESS:
       return {
         loading: false, 
-        data: action.payload.data, 
+        data: action.payload.data,
         pages: action.payload.pages,
-        page: action.payload.page
+        page: action.payload.page,
       }
     case DATA_LIST_FAIL:
       return {loading: false, error: action.payload}
