@@ -31,7 +31,7 @@ const AppNavbar = ({isAuthenticated, setAuth}) => {
     
     isAuthenticated ? 
       
-      <Navbar bg="primary" variant="dark" expand="lg" className="mb-5">
+      <Navbar bg="primary" variant="dark" expand="lg" className="app-navbar">
         <Container>
           <Navbar.Brand href="/">Take Home Assessment</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

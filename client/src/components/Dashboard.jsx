@@ -19,7 +19,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   const [dataLength, setDataLength] = useState(0)
   const dataList = useSelector((state) => state.data)
-  const {loading, error, data, page, pages} = dataList
+  const {loading, error, data, page, pages, totalEntities, highRiskCount} = dataList
  
   const [searchBy, setSearchBy] = useState(null)
   const [sortType, setSortType] = useState("ascending")
@@ -49,7 +49,8 @@ const Dashboard = () => {
   return (
     <Fragment>
       <FilterSearch/>
-      <div className="mb-3">Page {page} of {data.length * pages} entities</div>
+      <div className="mb-5">Count of high-risk entities: {highRiskCount}</div>
+      <div className="mb-3">Page {page} of {totalEntities} entities</div>
       <Row className="tabular-header">
         <Col sm={12} className="data-col-1">
           <strong 

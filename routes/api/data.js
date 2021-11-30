@@ -5,7 +5,6 @@ const router = express.Router();
 const Data = require('../../models/Data')
 
 // route Get api/data
-// route description: get all data
 router.get('/', async (req, res) => {
   const pageSize = 20;
   const page = Number(req.query.pageNumber) || 1
@@ -22,9 +21,13 @@ router.get('/', async (req, res) => {
     }
    : {}
 
+  let highRiskCount = await Data.find({ "PredictedFlag": "Yes" })
+  highRiskCount = highRiskCount.length
+  let totalEntities = await Data.find()
+  totalEntities = totalEntities.length
   const count = await Data.countDocuments({...keyword})
   const data = await Data.find({...keyword}).limit(pageSize).skip(pageSize * (page - 1))
-  res.json({data, page, pages: Math.ceil(count / pageSize)})
+  res.json({data, page, pages: Math.ceil(count / pageSize), totalEntities, highRiskCount})
 })
 
 

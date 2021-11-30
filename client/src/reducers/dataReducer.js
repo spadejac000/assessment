@@ -10,6 +10,8 @@ export const dataReducer = (state = {data: []}, action) => {
         data: action.payload.data,
         pages: action.payload.pages,
         page: action.payload.page,
+        totalEntities: action.payload.totalEntities,
+        highRiskCount: action.payload.highRiskCount
       }
     case DATA_LIST_FAIL:
       return {loading: false, error: action.payload}
