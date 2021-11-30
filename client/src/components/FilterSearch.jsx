@@ -19,15 +19,14 @@ const FilterSearch = () => {
   }
 
   return (
-    <Form className="d-flex filter-search-bar" onSubmit={submitHandler}>
+    <Form className="d-flex filter-search-bar input-group" onSubmit={submitHandler}>
       <FormControl
         type="text"
         placeholder="Search..."
-        className="me-2"
         aria-label="Search"
         onChange={event => {setkeyword(event.target.value)}}
       />
-      <Button type="submit" variant="primary">Search</Button>
+        <Button type="submit" variant="primary">Search</Button>
     </Form>
   )
 }
