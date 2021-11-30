@@ -7,6 +7,7 @@ export const listData = (keyword = '', pageNumber = '') => async (dispatch) => {
 
     const {data} = await axios.get(`/api/data?${keyword.trim()}&pageNumber=${pageNumber}`)
 
+    console.log('hello hello hello hello')
     dispatch({
       type: DATA_LIST_SUCCESS,
       payload: data

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Navbar, Container, Nav, Button} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
@@ -12,13 +12,15 @@ import {Route} from 'react-router-dom'
 const AppNavbar = ({isAuthenticated, setAuth}) => {
 
   const dispatch = useDispatch();
-  const user = useSelector(state => 
-    state.user
-  )
 
   useEffect(() => {
     dispatch(printUser())
-  }, [dispatch])
+  }, [dispatch, isAuthenticated])
+
+
+  const user = useSelector(state => 
+    state.user
+  )
 
   const logout = (e) => {
     e.preventDefault()

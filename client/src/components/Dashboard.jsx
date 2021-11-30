@@ -1,7 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react'
-import axios from 'axios'
 import '../css/dashboard.css'
-import {Row, Col, Form, FormControl, Button} from 'react-bootstrap'
+import {Row, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSort} from '@fortawesome/free-solid-svg-icons';
 import Paginate from './Paginate';

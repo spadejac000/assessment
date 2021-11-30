@@ -1,5 +1,4 @@
 import {USER_REQUEST, USER_SUCCESS, USER_FAIL} from '../constants/userConstants'
-import axios from 'axios'
 
 export const printUser = () => async (dispatch) => {
   try {
@@ -9,6 +8,7 @@ export const printUser = () => async (dispatch) => {
       headers: {token: localStorage.token}
     })
     const parseResponse = await data.json();
+    
     dispatch({
       type: USER_SUCCESS, 
       payload: parseResponse

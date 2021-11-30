@@ -47,10 +47,10 @@ function App() {
           <Routes>
             <Route exact path="/login" element={!isAuthenticated ? <Login setAuth={setAuth}/> : <Navigate to="/"/>}/>
             <Route exact path="/register" element={!isAuthenticated ? <Register setAuth={setAuth}/> : <Navigate to="/login"/>}/>
-            <Route exact path="/" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="login"/>}/>
-            <Route path="/search/:keyword" element={<Dashboard/>}/>
-            <Route path="/page/:pageNumber" element={<Dashboard/>}/>
-            <Route path="/search/:keyword/page/:pageNumber" element={<Dashboard/>}/>
+            <Route exact path="/" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="/login"/>}/>
+            <Route path="/search/:keyword" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="/login"/>}/>
+            <Route path="/page/:pageNumber" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="/login"/>}/>
+            <Route path="/search/:keyword/page/:pageNumber" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="/login"/>}/>
           </Routes>
         </Container>
       </Router>
